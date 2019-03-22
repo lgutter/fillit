@@ -6,12 +6,12 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/08 15:56:45 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/22 16:42:33 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 
-FILES := 
+FILES := fillit.c solver.c
 
 HEADER := fillit.h
 
