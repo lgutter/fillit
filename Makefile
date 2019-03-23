@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/23 16:06:59 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/23 17:43:39 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ NAME := fillit
 all: $(NAME)
 
 $(NAME):
-	@${CC} $(FILES) -I ./libft -L ./lft
+	@make -C libft/ fclean && make -C libft/
+	@${CC} $(FILES) -I ./libft -L ./libft -lft
 
 clean:
 	@rm -rf *~ \#*\# .DS_Store
