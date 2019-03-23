@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/22 19:17:11 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/23 16:06:59 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME := fillit
 all: $(NAME)
 
 $(NAME):
-	@${CC} $(FILES)
+	@${CC} $(FILES) -I ./libft -L ./lft
 
 clean:
 	@rm -rf *~ \#*\# .DS_Store

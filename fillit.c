@@ -13,6 +13,7 @@
 //#define SECOND_HASH 3840
 //#define THIRD_HASH 240
 
+#include "fillit.h"
 unsigned short	smallest_map(short tetcount);
 
 void	error(char c)
