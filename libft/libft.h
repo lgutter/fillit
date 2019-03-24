@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/12 18:16:38 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/18 16:05:36 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/24 18:15:26 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+/*
+** mandatory functions
+*/
 int					ft_atoi(char const *str);
 void				ft_bzero(void *s, size_t n);
 int					ft_isalnum(int c);
@@ -83,32 +86,52 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
-unsigned int		ft_nbrlen(long long n, unsigned int base);
-void				ft_del(void *data, size_t size);
-void				ft_lstaddend(t_list **lst, t_list *new);
-unsigned int		ft_lstleng(t_list *lst);
-char				*ft_itoba(int n, unsigned int base);
-int					ft_iswhitespace(int c);
+# pragma mark advanced math
+
 unsigned int		ft_isprime(unsigned int num);
 int					ft_power(int num, unsigned int power);
+int					ft_sqrt(int nb);
+int					ft_factorial(int nb);
+
+# pragma mark simple math
+
+char				*ft_itoba(int n, unsigned int base);
+unsigned int		ft_nbrlen(long long n, unsigned int base);
 int					ft_max(int val1, int val2);
 int					ft_min(int val1, int val2);
 int					ft_constrain(int in, int min, int max);
-void				ft_segdefault(void);
-int					ft_count_if(char **tab, int (*f)(char*));
-int					*ft_range(int min, int max);
-int					ft_sqrt(int nb);
-int					ft_factorial(int nb);
 long long			ft_absneg(long long num);
+int					*ft_range(int min, int max);
+
+# pragma mark lst handling
+
+void				ft_del(void *data, size_t size);
+void				ft_lstaddend(t_list **lst, t_list *new);
+unsigned int		ft_lstleng(t_list *lst);
+void				ft_lsttardest(t_list **lst, t_list **target);
+char				**ft_lsttostrarr(t_list *lst);
+t_list				*ft_strarrtolst(char **strarr);
+
+# pragma mark str handling
+
 void				ft_putstrarr(char **strarr);
 void				ft_putstrarr_fd(char **strarr, int fd);
 void				ft_strarrdel(char ***ap);
-char				**ft_lsttostrarr(t_list *lst);
-t_list				*ft_strarrtolst(char **strarr);
-void				ft_swap(int *a, int *b);
-void				ft_lsttardest(t_list **lst, t_list **target);
+char				**ft_strarrnew(size_t size);
+char				**ft_textangle(size_t x, size_t y);
+char				*ft_stralloc(size_t size, char c);
+
+# pragma mark mem handling
+
 void				*ft_memjoin(void *mem1, size_t size1, void *mem2,\
 size_t size2);
 void				*ft_memdup(void *src, size_t len);
+
+# pragma mark utility
+
+int					ft_iswhitespace(int c);
+void				ft_swap(int *a, int *b);
+void				ft_segdefault(void);
+int					ft_count_if(char **tab, int (*f)(char*));
 
 #endif

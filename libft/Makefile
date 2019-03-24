@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/16 15:46:43 by aholster       #+#    #+#                 #
-#    Updated: 2019/02/18 15:58:07 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/24 18:15:11 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ BASICOR := memset bzero memcpy memccpy memmove memchr memcmp\
 CUSOR:= nbrlen del lstaddend itoba iswhitespace isprime power putstrarr\
  putstrarr_fd strarrdel strarrtolst lsttostrarr lstleng min max constrain\
  segdefault factorial count_if range sqrt absneg swap lsttardest memjoin \
- memdup
+ memdup strarrnew textangle stralloc
 
 
 HEAD = libft.h

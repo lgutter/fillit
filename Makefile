@@ -6,12 +6,13 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/23 17:43:39 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/24 18:38:23 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 
-FILES := fillit.c solver.c shift_corner.c place_tet.c smallest_map.c check_tet.c
+FILES := fillit.c solver.c shift_corner.c place_tet.c smallest_map.c\
+check_tet.c check_hash.c increment_offset.c place_final.c remove_tet.c
 
 HEADER := fillit.h
 
@@ -24,8 +25,8 @@ NAME := fillit
 all: $(NAME)
 
 $(NAME):
-	@make -C libft/ fclean && make -C libft/
-	@${CC} $(FILES) -I ./libft -L ./libft -lft
+	@make -C libft/
+	@${CC} $(FILES) -I ./libft -L ./libft -lft -o $(NAME)
 
 clean:
 	@rm -rf *~ \#*\# .DS_Store
@@ -36,9 +37,9 @@ fclean: clean
 re: fclean all
 
 norm:
-	@echo "**+++=====*=====*=====*=====OUT=====*=====*=====*=====+++**"
+	@echo "**+++=====*=====*=====*=====*{\033[0;31mOUT\033[0;00m}*=====*=====*=====*=====+++**"
 	@$(NORM) || TRUE 
-	@echo "**+++=====*=====*=====*=====*=====*=====*===*=====*=====+++**"
+	@echo "**+++=====*=====*=====*=====*=====*=====*=====*=====*=====+++**"
 
 add:
 	@git add $(FILES) $(HEADER) Makefile author
@@ -50,5 +51,5 @@ ifdef MSG
 	@git commit -m "$(MSG)"
 	git push
 else
-	@echo 'Usage: make push MSG="Message here"'
+	@echo "\033[0;31mUsage: make push MSG=\"Message here\"\033[0;00m"
 endif
