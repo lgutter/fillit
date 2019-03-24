@@ -14,8 +14,6 @@
 //#define THIRD_HASH 240
 
 #include "fillit.h"
-unsigned short	smallest_map(short tetcount);
-
 void	error(char c)
 {
 	printf("error on %c\n", c);
@@ -55,7 +53,7 @@ int		fillit(void)
 			}
 			else if ((i + 1) % 5 != 0 ||
 					 ((i + 1) % 5 == 0 && buffer[i] != '\n'))
-					error(buffer[i]);
+				error(buffer[i]);
 			i++;
 		}
 		shift_corner(&tet[tetcount]);
@@ -92,7 +90,7 @@ int		fillit(void)
 		i = 0;
 		fd = 12;
 		while (i < 20)
-		{	
+		{
 			if (i - ((i + 1) / 5) == ((tet[tetcount] >> fd) & MASK))
 			{
 				fd -= 4;
@@ -110,10 +108,10 @@ int		fillit(void)
 	return (0);
 }
 
-int main(void)
+int		main(void)
 {
 	int i;
-	
+
 	i = 0;
 	while (i < 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 16:40:34 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 18:37:27 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/24 18:43:14 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	print_result(unsigned int *tet, unsigned short di)
 			ft_error();
 		index++;
 	}
-	
-	exit (1);
+
+	exit(1);
 }
 
 int		solve(unsigned int *tet, short curtet, unsigned short *map,\
@@ -63,9 +63,6 @@ void	map_control(unsigned int *tet, short tetcount)
 
 	index = 0;
 	di = smallest_map(tetcount);\
-//	map = (unsigned short *)malloc(sizeof(unsigned short *) * 16);
-//	if (map == NULL)
-//		ft_error();
 	while (index < 16)
 	{
 		map[index] = 0;

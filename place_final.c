@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   place_final.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/24 16:20:55 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/03/24 16:20:55 by lgutter       ########   odam.nl         */
+/*   Created: 2019/03/24 16:20:55 by lgutter        #+#    #+#                */
+/*   Updated: 2019/03/24 18:44:05 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ void	place_final(unsigned short tet, unsigned short *map)
 	short			hash;
 	unsigned char	y;
 	unsigned char	x;
-	
+
 	hash = 0;
 	while (hash < 4)
 	{

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/11 16:20:57 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 18:37:55 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/24 18:42:02 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,5 @@ unsigned short *map, unsigned short di);
 int				remove_tet(unsigned int *tet, unsigned short *map,\
 unsigned short di);
 int				increment_offset(unsigned int *tet, unsigned short di);
-
-
 
 #endif
