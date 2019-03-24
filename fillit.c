@@ -120,4 +120,5 @@ int main(void)
 		fillit();
 		i++;
 	}
+	return (0);
 }
