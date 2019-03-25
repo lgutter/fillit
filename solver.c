@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 16:40:34 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/25 15:37:20 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/25 15:53:43 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	map_control(unsigned int *tet, short tetcount)
 	unsigned short	index;
 
 	index = 0;
-	di = smallest_map(tetcount);\
+	di = smallest_map(tetcount);
 	while (index < 16)
 	{
 		map[index] = 0;

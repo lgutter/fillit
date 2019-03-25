@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/12 18:16:38 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/25 15:19:36 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/25 15:54:23 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void				ft_putstrarr(char **strarr);
 void				ft_putstrarr_fd(char **strarr, int fd);
 void				ft_strarrdel(char ***ap);
 char				**ft_strarrnew(size_t size);
-char				**ft_textangle(size_t x, size_t y, char c)
+char				**ft_textangle(size_t x, size_t y, char c);
 char				*ft_stralloc(size_t size, char c);
 
 # pragma mark mem handling
