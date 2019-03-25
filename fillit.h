@@ -6,14 +6,16 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/11 16:20:57 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 18:42:02 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/25 15:37:55 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# define MASK 15
+# define MASK2B	3
+# define MASK4B	15
+# define MASKBY	255
 
 # include "libft.h"
 
@@ -30,5 +32,6 @@ unsigned short *map, unsigned short di);
 int				remove_tet(unsigned int *tet, unsigned short *map,\
 unsigned short di);
 int				increment_offset(unsigned int *tet, unsigned short di);
+void			print_result(unsigned int *tet, unsigned short di);
 
 #endif

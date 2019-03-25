@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/24 18:02:21 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 18:14:27 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/25 15:19:18 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_textangle(size_t x, size_t y)
+char	**ft_textangle(size_t x, size_t y, char c)
 {
 	char	**rectangle;
 	size_t	index;
@@ -24,7 +24,7 @@ char	**ft_textangle(size_t x, size_t y)
 	rectangle[y] = NULL;
 	while (index < y)
 	{
-		rectangle[index] = ft_strnew(x);
+		rectangle[index] = ft_stralloc(x, c);
 		if (rectangle[index] == NULL)
 		{
 			ft_strarrdel(&rectangle);

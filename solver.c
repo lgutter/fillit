@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 16:40:34 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 18:43:14 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/25 15:37:20 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,6 @@ void	ft_error(void)
 {
 	ft_putendl("error");
 	exit(-1);
-}
-
-void	print_result(unsigned int *tet, unsigned short di)
-{
-	char			**arr;
-	unsigned int	index;
-
-	(void)tet;
-	index = 0;
-	arr = (char **)malloc(sizeof(char *) * di);
-	if (arr == NULL)
-		ft_error();
-	while (index < di)
-	{
-		arr[index] = (char *)malloc(sizeof(char) * di + 1);
-		if (arr[index] == NULL)
-			ft_error();
-		index++;
-	}
-
-	exit(1);
 }
 
 int		solve(unsigned int *tet, short curtet, unsigned short *map,\
