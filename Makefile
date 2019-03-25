@@ -6,14 +6,14 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/25 15:51:18 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/25 17:06:19 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 
-FILES := fillit.c solver.c shift_corner.c place_tet.c smallest_map.c\
+FILES := main.c fillit.c solver.c shift_corner.c place_tet.c smallest_map.c\
 check_tet.c check_hash.c increment_offset.c place_final.c remove_tet.c\
-print_result.c
+print_result.c read_tet.c
 
 HEADER := fillit.h
 

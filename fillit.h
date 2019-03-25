@@ -18,12 +18,17 @@
 # define MASKBY	255
 
 # include "libft.h"
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 
+int				read_tet(unsigned int *tet, char *buff);
+void			fillit(int fd);
 void			map_control(unsigned int *tet, short tetcount);
 int				place_tet(unsigned int *tet, unsigned short *map,\
 unsigned short di);
 unsigned short	smallest_map(short tetcount);
-int				check_tet(unsigned int tet);
+int				check_tet(unsigned int *tet);
 void			shift_corner(unsigned int *tet);
 void			ft_error(void);
 void			place_final(unsigned short tet, unsigned short *map);
