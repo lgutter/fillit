@@ -18,7 +18,7 @@ unsigned short di)
 
 	y = (((tet >> 16) & 255) + ((tet >> ((hash - 1) * 4)) & 3));
 	x = ((tet >> 24) + ((tet >> ((hash - 1) * 4 + 2)) & 3));
-	if (x <= di && y <= di && ((map[y] >> x) & 1) == 0)
+	if (x < di && y < di && ((map[y] >> x) & 1) == 0)
 		return (1);
 	return (-1);
 }

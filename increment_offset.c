@@ -15,8 +15,8 @@ int	increment_offset(unsigned int *tet, unsigned short di)
 	unsigned char *offx;
 	unsigned char *offy;
 
-	offx = (unsigned char *)(tet) + 3;
-	offy = (unsigned char *)(tet) + 2;
+	offx = (unsigned char *)(tet) + 2;
+	offy = (unsigned char *)(tet) + 3;
 	if (*offx < di)
 		*offx = *offx + 1;
 	else if (*offy < di)

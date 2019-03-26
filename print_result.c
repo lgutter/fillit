@@ -35,7 +35,7 @@ void		print_result(unsigned int *tet, unsigned short di)
 	unsigned int	index;
 
 	index = 0;
-	arr = ft_textangle((di * 2), (di * 2), '.');
+	arr = ft_textangle((di), (di), '.');
 	if (arr == NULL)
 		ft_error();
 	while (tet[index] != 0)
