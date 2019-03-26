@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	place_final(unsigned short tet, unsigned short *map)
+void	place_final(unsigned int tet, unsigned short *map)
 {
 	short			hash;
 	unsigned char	y;
@@ -19,8 +19,8 @@ void	place_final(unsigned short tet, unsigned short *map)
 	hash = 0;
 	while (hash < 4)
 	{
-		y = (((tet >> 16) & 255) + ((tet >> (hash * 4)) & 3));
-		x = ((tet >> 24) + ((tet >> (hash * 4 + 2)) & 3));
+		y = (((tet >> 16) & 255) + ((tet >> hash * 4) & 3));
+		x = ((tet >> 24) + ((tet >> ((hash * 4) + 2)) & 3));
 		map[y] = map[y] | (1 << x);
 		hash++;
 	}
