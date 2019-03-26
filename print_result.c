@@ -21,10 +21,10 @@ static void	ft_converttet(unsigned int tet, unsigned int index, char **arr)
 	offy = (tet >> 16) & MASKBY;
 	offx = (tet >> 24);
 	offset = 0;
-	while (offset < 12)
+	while (offset <= 12)
 	{
-		arr[offy + ((tet >> offset) & MASK2B)]\
-		[offx + ((tet >> (offset + 2)) & MASK2B)] = 'A' + index;
+		arr[offx + ((tet >> (offset + 2)) & MASK2B)]\
+		[offy + ((tet >> offset) & MASK2B)] = 'A' + index;
 		offset += 4;
 	}
 }
@@ -35,7 +35,7 @@ void		print_result(unsigned int *tet, unsigned short di)
 	unsigned int	index;
 
 	index = 0;
-	arr = ft_textangle(di, di, '.');
+	arr = ft_textangle((di * 2), (di * 2), '.');
 	if (arr == NULL)
 		ft_error();
 	while (tet[index] != 0)
