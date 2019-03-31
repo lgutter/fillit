@@ -14,7 +14,7 @@
 
 void	fillit(int fd)
 {
-	unsigned int	tet[26];
+	unsigned int	tet[27];
 	short			tc;
 	char			buffer[20];
 	ssize_t			ret;
@@ -39,5 +39,6 @@ void	fillit(int fd)
 		tet[tc] = 0;
 	}
 	close (fd);
+	tet[26] = tc;
 	map_control(&tet[0], tc);
 }

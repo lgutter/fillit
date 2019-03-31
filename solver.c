@@ -18,12 +18,45 @@ void	ft_error(void)
 	exit(-1);
 }
 
+static unsigned short	di_exceptions(\
+						unsigned short di, unsigned int *tet, short tetcount)
+{
+	short lc;
+	short fc;
+	short sc;
+	short i;
+	
+	i = 0;
+	sc = 0;
+	lc = 0;
+	fc = 0;
+	while (i < tetcount)
+	{
+		if (tet[i] == 1164)
+			lc++;
+		if (tet[i] == 291)
+			fc++;
+		if (tet[i] == 325)
+			sc++;
+		i++;
+	}
+	if ((di < 8 && (di < lc || di < fc)) ||\
+		(di % 2 == 1 && (sc * 4) > (di - 1) * (di - 1)) ||\
+		(di >= 8 && (di + di < lc || di + di < fc)))
+		return (di + 1);
+	return (di);
+}
+
 int		solve(unsigned int *tet, short curtet, unsigned short *map,\
 unsigned short di)
 {
 	if (tet[curtet] == 0)
 	{
 		print_result(tet, di);
+	}
+	if (calc_empty(map, di) < ((tet[26] - curtet) * 4))
+	{
+		return (0);
 	}
 	while (place_tet(&tet[curtet], map, di) == 1)
 	{
@@ -42,6 +75,7 @@ void	map_control(unsigned int *tet, short tetcount)
 
 	index = 0;
 	di = smallest_map(tetcount);
+	di = di_exceptions(di, tet, tetcount);
 	while (index < 16)
 	{
 		map[index] = 0;
@@ -51,4 +85,5 @@ void	map_control(unsigned int *tet, short tetcount)
 	{
 		di++;
 	}
+	ft_error();
 }

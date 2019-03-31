@@ -44,5 +44,6 @@ void		print_result(unsigned int *tet, unsigned short di)
 		index++;
 	}
 	ft_putstrarr(arr);
+	ft_strarrdel(&arr);
 	exit(1);
 }

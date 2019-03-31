@@ -31,9 +31,7 @@ unsigned short	smallest_map(short tetcount);
 int				check_tet(unsigned int *tet);
 void			shift_corner(unsigned int *tet);
 void			ft_error(void);
-void			place_final(unsigned int tet, unsigned short *map);
-//int				check_hash(short hash, unsigned int tet,\
-//unsigned short *map, unsigned short di);
+unsigned short	calc_empty(unsigned short *map, unsigned short di);
 int				remove_tet(unsigned int *tet, unsigned short *map,\
 unsigned short di);
 int				increment_offset(unsigned int *tet, unsigned short di);
