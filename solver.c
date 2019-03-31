@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 16:40:34 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/31 19:00:16 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/31 19:05:41 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_error(void)
+void					ft_error(void)
 {
 	ft_putendl("error");
 	exit(-1);
@@ -25,7 +25,7 @@ static unsigned short	di_exceptions(unsigned short di,\
 	short fc;
 	short sc;
 	short i;
-	
+
 	i = 0;
 	sc = 0;
 	lc = 0;

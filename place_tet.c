@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 16:51:36 by lgutter        #+#    #+#                */
-/*   Updated: 2019/03/24 18:46:18 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/31 19:07:03 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	place_final(unsigned int tet, unsigned short *map)
 {
 	unsigned char	y;
 	unsigned char	x;
-	
+
 	y = (((tet >> 16) & 255) + ((tet >> 0) & 3));
 	x = ((tet >> 24) + ((tet >> ((0) + 2)) & 3));
 	map[y] = map[y] | (1 << x);
@@ -32,11 +32,11 @@ static void	place_final(unsigned int tet, unsigned short *map)
 }
 
 static int	check_hash(unsigned int tet, unsigned short *map,\
-			   unsigned short di)
+			unsigned short di)
 {
 	unsigned char	y;
 	unsigned char	x;
-	
+
 	y = (((tet >> 16) & 255) + ((tet >> (0) & 3)));
 	x = ((tet >> 24) + ((tet >> ((0) + 2)) & 3));
 	if (x >= di || y >= di || ((map[y] >> x) & 1) != 0)
@@ -56,7 +56,8 @@ static int	check_hash(unsigned int tet, unsigned short *map,\
 	return (1);
 }
 
-int			place_tet(unsigned int *tet, unsigned short *map, unsigned short di)
+int			place_tet(unsigned int *tet, unsigned short *map,\
+			unsigned short di)
 {
 	while (check_hash(*tet, map, di) != 1)
 	{
