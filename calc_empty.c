@@ -6,19 +6,29 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/31 15:22:56 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/03/31 15:22:57 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/03/31 19:12:47 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+static void				copy_map(unsigned short *temp, unsigned short *map,\
+								unsigned short di)
+{
+	unsigned short i;
+
+	i = 0;
+	while (i < di)
+	{
+		temp[i] = ~map[i];
+		i++;
+	}
+}
 
 static unsigned short	floodbit(unsigned short *map, unsigned short di,\
 								unsigned short x, unsigned short y)
 {
 	unsigned short	chain;
-	
+
 	chain = 0;
-	
 	if (((map[y] >> x) & 1) == 1)
 	{
 		map[y] ^= 1 << x;
@@ -42,15 +52,10 @@ unsigned short			calc_empty(unsigned short *map, unsigned short di)
 	unsigned short x;
 	unsigned short count;
 	unsigned short chain;
-	
+
 	y = 0;
 	count = 0;
-	while (y < di)
-	{
-		temp[y] = ~map[y];
-		y++;
-	}
-	y = 0;
+	copy_map(temp, map, di);
 	while (y < di)
 	{
 		x = 0;

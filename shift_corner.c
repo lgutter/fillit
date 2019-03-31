@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
 void	shift_corner(unsigned int *tet)
 {
 	unsigned short smallest;

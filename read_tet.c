@@ -10,20 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
 int		read_tet(unsigned int *tet, char *buff)
 {
 	short i;
 	short hash;
-	
+
 	i = 0;
 	hash = 0;
 	if (buff[19] != '\n')
-		return(-1);
+		return (-1);
 	while (i < 20)
 	{
-		while(buff[i] == '.')
+		while (buff[i] == '.')
 			i++;
 		if (buff[i] == '#' && hash < 4)
 		{
@@ -31,7 +29,7 @@ int		read_tet(unsigned int *tet, char *buff)
 			*tet = (*tet << 4) | (i - ((i + 1) / 5));
 		}
 		else if ((i + 1) % 5 != 0 || ((i + 1) % 5 == 0 && buff[i] != '\n'))
-			return(-1);
+			return (-1);
 		i++;
 	}
 	if (hash != 4)
