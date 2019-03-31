@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/31 18:53:49 by lgutter       ########   odam.nl          #
+#    Updated: 2019/03/31 18:57:29 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,11 @@ $(NAME):
 
 clean:
 	@rm -rf *~ \#*\# .DS_Store
+	@make clean -C libft/
 
 fclean: clean
 	@rm -rf $(NAME)
+	@make fclean -C libft/
 
 re: fclean all
 

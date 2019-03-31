@@ -6,16 +6,15 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/16 15:46:43 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/24 18:15:11 by aholster      ########   odam.nl          #
+#    Updated: 2019/03/31 19:02:16 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 BONOR := lstnew lstdelone lstdel lstadd lstiter lstmap
 
-ADVOR := memalloc memdel strnew strdel strclr striter striteri\
- strmap strmapi strequ strnequ strsub strjoin strtrim strsplit\
- itoa putchar putstr putendl putnbr putchar_fd putstr_fd putendl_fd\
- putnbr_fd 
+ADVOR := memalloc memdel strnew strdel strclr striter striteri strmap\
+ strmapi strequ strnequ strsub strjoin strtrim strsplit itoa putchar\
+ putstr putendl putnbr putchar_fd putstr_fd putendl_fd putnbr_fd 
 
 BASICOR := memset bzero memcpy memccpy memmove memchr memcmp\
  strlen strdup strcpy strncpy strcat strncat strlcat strchr strrchr\
@@ -28,54 +27,54 @@ CUSOR:= nbrlen del lstaddend itoba iswhitespace isprime power putstrarr\
  memdup strarrnew textangle stralloc
 
 
+FILEC = $(ADVOR:%=./ft_%.c) $(BONOR:%=./ft_%.c)\
+		$(CUSOR:%=./ft_%.c) $(BASICOR:%=./ft_%.c)
+
+OBJ =	$(ADVOR:%=./ft_%.o) $(BONOR:%=./ft_%.o)\
+		$(CUSOR:%=./ft_%.o) $(BASICOR:%=./ft_%.o)
+
 HEAD = libft.h
-
-BASIC = $(BASICOR:%=./ft_%.c)
-BASICO = $(BASICOR:%=./ft_%.o)
-
-ADVC = $(ADVOR:%=./ft_%.c) $(BONOR:%=./ft_%.c) $(CUSOR:%=./ft_%.c)
-ADVO = $(ADVOR:%=./ft_%.o) $(BONOR:%=./ft_%.o) $(CUSOR:%=./ft_%.o)
-
-NORM = norminette $(BASIC) $(ADVC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
-
-GCCC = ${CC} -c
-CC = gcc -Wall -Werror -Wextra
-AR = ar r
 
 NAME = libft.a
 
-all: $(ADVO) $(BASICO) $(NAME)
+NORM = norminette $(FILEC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
 
-$(NAME): $(ADVO) $(BASICO)
-	@${GCCC} ${BASIC} $(ADVC)
-	@$(AR) $(NAME) $(BASICO) $(ADVO)
+GCCC = ${CC} -c
+CC = gcc -Wall -Werror -Wextra
+AR = ar rcs
+
+all: $(OBJ) $(NAME)
+
+$(NAME): $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
+%.o: %.c
+	@$(GCCC) -o $@ $<
+
 clean:
-	@rm -rf $(BASICO) $(ADVO) *~ \#*\# .DS_Store
+	@rm -rf $(OBJ) *~ \#*\# .DS_Store
 
 fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
 
-lab: re
-	@$(CC) -L. -lft -I./ $(TEBAS) $(TEADV) ./test/main.c -o adept
-
 norm:
-	@echo "**+++=====*=====*=====*=====OUT=====*=====*=====*=====+++**"
+	@echo "**+++=====*=====*=====*=====*{\033[0;31mOUT\033[0;00m}\
+	*=====*=====*=====*=====+++**"
 	@$(NORM) || TRUE 
 	@echo "**+++=====*=====*=====*=====*=====*=====*===*=====*=====+++**"
 
 add:
-	@git add $(BASIC) $(ADVC) $(HEAD) Makefile author
+	@git add $(FILEC) $(HEAD) Makefile author
 	git status
 
-push:
+push: norm
 ifdef MSG
-	@make norm
 	@git commit -m "$(MSG)"
 	git push
 else
-	@echo "ERROR: NO MESSAGE"
+	@git commit
+	git push
 endif
