@@ -50,7 +50,7 @@ static unsigned short	di_exceptions(unsigned short di,\
 static int				solve(unsigned int *tet, short curtet,\
 						unsigned short *map, unsigned short di)
 {
-	if (tet[curtet] == 0)
+	if (curtet >= (short)tet[26])
 	{
 		print_result(tet, di);
 	}

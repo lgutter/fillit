@@ -38,7 +38,7 @@ void		print_result(unsigned int *tet, unsigned short di)
 	arr = ft_textangle((di), (di), '.');
 	if (arr == NULL)
 		ft_error();
-	while (tet[index] != 0)
+	while (index < tet[26])
 	{
 		ft_converttet(tet[index], index, arr);
 		index++;
