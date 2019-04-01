@@ -20,7 +20,7 @@ void	fillit(int fd)
 
 	tet[26] = 0;
 	ret = read(fd, buff, 20);
-	while (tet[26] != 26 && ret != 0)
+	while (ret != 0)
 	{
 		tet[tet[26]] = 0;
 		if (read_tet(&tet[tet[26]], buff) != 1 || check_tet(&tet[tet[26]]) != 1)
@@ -31,7 +31,7 @@ void	fillit(int fd)
 			if (buff[0] != '\n')
 				ft_error();
 			ret = read(fd, buff, 20);
-			if (ret != 20)
+			if (ret != 20 || tet[26] > 25)
 				ft_error();
 		}
 		else
