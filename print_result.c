@@ -6,13 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/25 15:37:06 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/25 15:55:30 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/01 15:00:02 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void	ft_converttet(unsigned int tet, unsigned int index, char **arr)
+static void	ft_converttet(unsigned int tet, unsigned int index,\
+			char arr[16][16])
 {
 	unsigned short	offy;
 	unsigned short	offx;
@@ -29,21 +30,42 @@ static void	ft_converttet(unsigned int tet, unsigned int index, char **arr)
 	}
 }
 
+static void	ft_initsquare(unsigned short di, char arr[16][16])
+{
+	unsigned int	index;
+	unsigned int	sudex;
+
+	index = 0;
+	while (index < di)
+	{
+		sudex = 0;
+		while (sudex < di)
+		{
+			arr[index][sudex] = '.';
+			sudex++;
+		}
+		arr[index][sudex] = '\0';
+		index++;
+	}
+}
+
 void		print_result(unsigned int *tet, unsigned short di)
 {
-	char			**arr;
+	char			arr[16][16];
 	unsigned int	index;
 
 	index = 0;
-	arr = ft_textangle((di), (di), '.');
-	if (arr == NULL)
-		ft_error();
+	ft_initsquare(di, arr);
 	while (index < tet[26])
 	{
 		ft_converttet(tet[index], index, arr);
 		index++;
 	}
-	ft_putstrarr(arr);
-	ft_strarrdel(&arr);
+	index = 0;
+	while (index < di)
+	{
+		ft_putendl(arr[index]);
+		index++;
+	}
 	exit(1);
 }
