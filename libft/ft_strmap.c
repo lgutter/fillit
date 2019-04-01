@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/16 19:57:12 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 15:11:47 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/01 16:51:38 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*str;
 
 	index = 0;
-	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (str == NULL)
 		return (NULL);
 	while (s[index] != '\0')
 	{

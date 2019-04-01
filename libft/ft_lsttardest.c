@@ -6,24 +6,24 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/07 16:09:18 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/10 17:11:32 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/31 15:35:49 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lsttardest(t_list **lst, t_list **target)
+void	ft_lsttardest(t_list **lst, t_list **target, void (*del)(void *, size_t))
 {
 	t_list	*trail;
 	t_list	*hunter;
 
-	if (target == NULL || *target == NULL)
+	if (target == NULL || *target == NULL || del == NULL)
 		return ;
 	hunter = *lst;
 	if (hunter == *target)
 	{
 		*lst = hunter->next;
-		ft_lstdelone(&hunter, &ft_del);
+		ft_lstdelone(&hunter, del);
 	}
 	while (hunter != NULL)
 	{
@@ -32,7 +32,7 @@ void	ft_lsttardest(t_list **lst, t_list **target)
 		if (hunter == *target)
 		{
 			trail->next = hunter->next;
-			ft_lstdelone(target, &ft_del);
+			ft_lstdelone(target, del);
 			return ;
 		}
 	}

@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/03/31 18:57:29 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/01 17:17:39 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,15 @@ all: $(NAME)
 $(NAME):
 	@make -C libft/
 	@${CC} $(FILES) -I ./libft -L ./libft -lft -o $(NAME)
+	@echo "\033[0;33mFillit Compiled\033[0;00m"
 
 clean:
 	@rm -rf *~ \#*\# .DS_Store
-	@make clean -C libft/
+	@echo "\033[0;31mMade Clean\033[0;00m"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make fclean -C libft/
+	@echo "\033[0;31mMade Fclean\033[0;00m"
 
 re: fclean all
 

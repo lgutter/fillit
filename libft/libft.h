@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/12 18:16:38 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/25 15:54:23 by aholster      ########   odam.nl         */
+/*   Updated: 2019/03/31 15:50:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int					*ft_range(int min, int max);
 void				ft_del(void *data, size_t size);
 void				ft_lstaddend(t_list **lst, t_list *new);
 unsigned int		ft_lstleng(t_list *lst);
-void				ft_lsttardest(t_list **lst, t_list **target);
+void				ft_lsttardest(t_list **lst, t_list **target, void (*del)(void *, size_t));
 char				**ft_lsttostrarr(t_list *lst);
 t_list				*ft_strarrtolst(char **strarr);
 
@@ -126,6 +126,8 @@ char				*ft_stralloc(size_t size, char c);
 void				*ft_memjoin(void *mem1, size_t size1, void *mem2,\
 size_t size2);
 void				*ft_memdup(void *src, size_t len);
+
+void				ft_bitprint(const void *addr, size_t size);
 
 # pragma mark utility
 
