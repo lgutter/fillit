@@ -18,6 +18,18 @@ void					ft_error(void)
 	exit(-1);
 }
 
+static unsigned int		duplicate_shortcut(unsigned int *tet,\
+								short curtet, unsigned int current)
+{
+	while (curtet > 0)
+	{
+		if (current == (tet[curtet - 1] & 65535))
+			return (tet[curtet - 1]);
+		curtet--;
+	}
+	return (current);
+}
+
 static unsigned short	di_exceptions(unsigned short di,\
 						unsigned int *tet, short tetcount)
 {
@@ -58,6 +70,7 @@ static int				solve(unsigned int *tet, short curtet,\
 	{
 		return (0);
 	}
+	tet[curtet] = duplicate_shortcut(tet, curtet, tet[curtet]);
 	while (place_tet(&tet[curtet], map, di) == 1)
 	{
 		solve(tet, curtet + 1, map, di);
