@@ -34,7 +34,8 @@ void			ft_error(void);
 unsigned short	calc_empty(unsigned short *map, unsigned short di);
 int				remove_tet(unsigned int *tet, unsigned short *map,\
 unsigned short di);
-int				increment_offset(unsigned int *tet, unsigned short di);
+int				increment_offset(unsigned int *tet, unsigned short di,\
+									unsigned short *map);
 void			print_result(unsigned int *tet, unsigned short di);
 
 #endif

@@ -6,9 +6,11 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/16 15:46:43 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/01 16:59:19 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/03 13:45:18 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
+
+DATE = $(shell date +"%H:%M:%S")
 
 BONOR := lstnew lstdelone lstdel lstadd lstiter lstmap
 
@@ -46,22 +48,24 @@ AR = ar rcs
 all: $(OBJ) $(NAME)
 
 $(NAME): $(OBJ)
+	@echo "\033[0;33mStarting assembly of libft.a at $(DATE)...\033[0;00m"
 	@$(AR) $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "\033[0;33m$(NAME) Compiled\033[0;00m"
+	@echo "\033[0;32m$(NAME) succesfully assembled at $(DATE)!\033[0;00m\n"
 
 %.o: %.c
 	@$(GCCC) -o $@ $<
 
 clean:
-	@echo "\033[0;31mInitializing of Summary Deletions\033[0;00m"
-	@rm -rf $(OBJ) *~ \#*\# .DS_Store
+	@echo "\033[0;33mInitializing Summary Deletions...\033[0;00m"
+	@rm -rf $(OBJ)
 	@find "./" -type f \( -name '*~' -o -name '\#*\#' -o -name '.DS_Store' \)\
 	 -exec rm -rfv {} \;
-	@echo "\033[0;31mThe Emperor Protects...\033[0;00m"
+	@echo "\033[0;31m	Executed!\033[0;00m\n"
 
 fclean: clean
-	@rm -rfv $(NAME)
+	@rm -rf $(NAME)
+	@echo "\033[0;31mObituary of $(NAME): Deceased $(DATE).\033[0;00m\n"
 
 re: fclean all
 

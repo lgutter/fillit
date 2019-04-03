@@ -21,7 +21,7 @@ int		check_tet(unsigned int *tet)
 	count = 0;
 	check = 12;
 	shift_corner(tet);
-	while (check >= 0)
+	while (check > 0)
 	{
 		temp = (*tet >> check) & 15;
 		if ((temp < 6 && temp != 3) || temp == 8)

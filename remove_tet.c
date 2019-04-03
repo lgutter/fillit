@@ -27,5 +27,5 @@ int	remove_tet(unsigned int *tet, unsigned short *map, unsigned short di)
 		(65535 - (1 << (*offx + ((*tet >> (hash * 4 + 2)) & 3))));
 		hash++;
 	}
-	return (increment_offset(tet, di));
+	return (increment_offset(tet, di, map));
 }

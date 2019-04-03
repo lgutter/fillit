@@ -28,7 +28,7 @@ int		read_tet(unsigned int *tet, char *buff)
 			hash++;
 			*tet = (*tet << 4) | (i - ((i + 1) / 5));
 		}
-		else if ((i + 1) % 5 != 0 || ((i + 1) % 5 == 0 && buff[i] != '\n'))
+		else if ((i + 1) % 5 != 0 || buff[i] != '\n')
 			return (-1);
 		i++;
 	}

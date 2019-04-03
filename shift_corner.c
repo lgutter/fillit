@@ -21,10 +21,6 @@ void	shift_corner(unsigned int *tet)
 	if (smallest > ((*tet >> 4) & 15) % 4)
 		smallest = ((*tet >> 4) & 15) % 4;
 	temp = ((*tet >> 12) / 4) * 4;
-	if (temp > (((*tet >> 8) & 15) / 4) * 4)
-		temp = (((*tet >> 8) & 15) / 4) * 4;
-	if (temp > (((*tet >> 4) & 15) / 4) * 4)
-		temp = (((*tet >> 4) & 15) / 4) * 4;
 	smallest += temp;
 	temp = ((*tet >> 12) - smallest) << 12;
 	temp = ((((*tet >> 8) & 15) - smallest) << 8) | temp;
