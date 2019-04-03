@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		if (fd >= 3)
+		if (fd >= 0)
 			fillit(fd);
 		else
 			ft_error();
