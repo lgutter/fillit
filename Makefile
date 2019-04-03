@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/03 15:39:49 by lgutter       ########   odam.nl          #
+#    Updated: 2019/04/03 15:56:10 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME):
 	@make -C libft/
 	@echo "\033[0;33mStarting assembly of $(NAME)...\033[0;00m"
 	@time make assemble
-	@echo "\033[0;32m$(NAME) succesfully assembled!\033[0;00m\n"
+	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
 clean:
 	@rm -rf *~ \#*\# .DS_Store

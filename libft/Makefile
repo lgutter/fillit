@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/16 15:46:43 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/03 15:45:52 by lgutter       ########   odam.nl          #
+#    Updated: 2019/04/03 15:54:03 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ assemble: $(OBJ)
 $(NAME):
 	@echo "\033[0;33mStarting assembly of libft.a...\033[0;00m"
 	@time make assemble
-	@echo "\033[0;32m$(NAME) succesfully assembled!\033[0;00m\n"
+	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
 %.o: %.c
 	@$(GCCC) -o $@ $<
