@@ -61,7 +61,7 @@ int			place_tet(unsigned int *tet, unsigned short *map,\
 {
 	while (check_hash(*tet, map, di) != 1)
 	{
-		if (increment_offset(tet, di, map) == -1)
+		if (increment_offset(tet, di) == -1)
 			return (-1);
 	}
 	place_final(*tet, map);
