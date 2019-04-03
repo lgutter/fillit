@@ -20,7 +20,7 @@ void	fillit(int fd)
 
 	tet[26] = 0;
 	ret = read(fd, buff, 20);
-	while (ret != 0)
+	while (1)
 	{
 		tet[tet[26]] = 0;
 		if (read_tet(&tet[tet[26]], buff) != 1 || check_tet(&tet[tet[26]]) != 1)
@@ -35,7 +35,7 @@ void	fillit(int fd)
 				ft_error();
 		}
 		else
-			ret = 0;
+			break;
 	}
 	close(fd);
 	map_control(&tet[0], tet[26]);
