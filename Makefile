@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/03 17:50:54 by lgutter       ########   odam.nl          #
+#    Updated: 2019/04/03 18:28:28 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ $(NAME):
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
 clean:
-	@rm -rf *.o *~ \#*\# .DS_Store
+	@rm -rf *~ \#*\# .DS_Store
+	@make clean -C libft/
 	@echo "\033[0;31mPests exterminated!\033[0;00m\n"
 
 fclean: clean

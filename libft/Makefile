@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/16 15:46:43 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/03 15:54:03 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/03 18:28:58 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,11 +58,9 @@ $(NAME):
 	@$(GCCC) -o $@ $<
 
 clean:
-	@echo "\033[0;33mInitializing Summary Deletions...\033[0;00m"
 	@rm -rf $(OBJ)
 	@find "./" -type f \( -name '*~' -o -name '\#*\#' -o -name '.DS_Store' \)\
-	 -exec rm -rfv {} \;
-	@echo "\033[0;31m	Executed!\033[0;00m\n"
+	 -exec rm -rf {} \;
 
 fclean: clean
 	@rm -rf $(NAME)
