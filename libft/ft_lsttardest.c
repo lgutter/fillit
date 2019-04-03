@@ -6,13 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/07 16:09:18 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/31 15:35:49 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/03 17:55:58 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lsttardest(t_list **lst, t_list **target, void (*del)(void *, size_t))
+void	ft_lsttardest(t_list **lst, t_list **target,\
+						void (*del)(void *, size_t))
 {
 	t_list	*trail;
 	t_list	*hunter;

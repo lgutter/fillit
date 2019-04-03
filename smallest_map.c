@@ -12,7 +12,6 @@
 
 unsigned short	smallest_map(short tetcount)
 {
-
 	if (tetcount < 13)
 	{
 		if (tetcount < 5)

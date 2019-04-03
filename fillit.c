@@ -35,7 +35,7 @@ void	fillit(int fd)
 				ft_error();
 		}
 		else
-			break;
+			break ;
 	}
 	close(fd);
 	map_control(&tet[0], tet[26]);

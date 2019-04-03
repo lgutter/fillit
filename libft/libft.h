@@ -108,7 +108,8 @@ int					*ft_range(int min, int max);
 void				ft_del(void *data, size_t size);
 void				ft_lstaddend(t_list **lst, t_list *new);
 unsigned int		ft_lstleng(t_list *lst);
-void				ft_lsttardest(t_list **lst, t_list **target, void (*del)(void *, size_t));
+void				ft_lsttardest(t_list **lst, t_list **target,\
+void (*del)(void *, size_t));
 char				**ft_lsttostrarr(t_list *lst);
 t_list				*ft_strarrtolst(char **strarr);
 
