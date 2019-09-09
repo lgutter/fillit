@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/12 18:16:38 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/31 15:50:00 by aholster      ########   odam.nl         */
+/*   Updated: 2019/09/09 21:21:34 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
-# pragma mark advanced math
+// advanced math
 
 unsigned int		ft_isprime(unsigned int num);
 int					ft_power(int num, unsigned int power);
 int					ft_sqrt(int nb);
 int					ft_factorial(int nb);
 
-# pragma mark simple math
+// simple math
 
 char				*ft_itoba(int n, unsigned int base);
 unsigned int		ft_nbrlen(long long n, unsigned int base);
@@ -103,7 +103,7 @@ int					ft_constrain(int in, int min, int max);
 long long			ft_absneg(long long num);
 int					*ft_range(int min, int max);
 
-# pragma mark lst handling
+// lst handling
 
 void				ft_del(void *data, size_t size);
 void				ft_lstaddend(t_list **lst, t_list *new);
@@ -113,7 +113,7 @@ void (*del)(void *, size_t));
 char				**ft_lsttostrarr(t_list *lst);
 t_list				*ft_strarrtolst(char **strarr);
 
-# pragma mark str handling
+// str handling
 
 void				ft_putstrarr(char **strarr);
 void				ft_putstrarr_fd(char **strarr, int fd);
@@ -122,7 +122,7 @@ char				**ft_strarrnew(size_t size);
 char				**ft_textangle(size_t x, size_t y, char c);
 char				*ft_stralloc(size_t size, char c);
 
-# pragma mark mem handling
+// mem handling
 
 void				*ft_memjoin(void *mem1, size_t size1, void *mem2,\
 size_t size2);
@@ -130,7 +130,7 @@ void				*ft_memdup(void *src, size_t len);
 
 void				ft_bitprint(const void *addr, size_t size);
 
-# pragma mark utility
+// utility
 
 int					ft_iswhitespace(int c);
 void				ft_swap(int *a, int *b);
