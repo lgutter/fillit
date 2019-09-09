@@ -1,4 +1,5 @@
 language: c
+os: macos
 sudo: false
 script:
     - make
