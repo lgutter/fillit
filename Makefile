@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/08 15:18:49 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/03 18:28:28 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/10 20:24:10 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ HEADER := fillit.h
 
 NORM := norminette $(FILES) $(HEADER) | grep -e "Error"  -e "Warning" -B 1
 
-CC := gcc -Wall -Werror -Wextra
+CC := gcc -g -Wall -Werror -Wextra
 
 NAME := fillit
 
