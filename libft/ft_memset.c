@@ -3,28 +3,40 @@
 /*                                                        ::::::::            */
 /*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 15:05:30 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/16 17:59:10 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/24 17:03:46 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/24 17:03:55 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *target, int setvalue, size_t len)
 {
-	unsigned char	character;
-	size_t			index;
-	char			*output;
+	size_t				i;
+	size_t				chunk_size;
+	unsigned long long	chunk;
 
-	character = c;
-	index = 0;
-	output = (char *)b;
-	while (index < len)
+	chunk = 0;
+	chunk_size = sizeof(unsigned long long);
+	i = chunk_size / sizeof(unsigned char);
+	while (i > 0)
 	{
-		output[index] = character;
-		index++;
+		chunk <<= 8;
+		chunk |= (unsigned long long)(unsigned char)setvalue;
+		i--;
 	}
-	return (b);
+	i = target == NULL ? len : 0;
+	while (len >= chunk_size && i < (len - chunk_size))
+	{
+		*(unsigned long long *)&(((unsigned char *)target)[i]) = chunk;
+		i += chunk_size;
+	}
+	while (i < len)
+	{
+		((unsigned char *)target)[i] = (unsigned char)setvalue;
+		i++;
+	}
+	return (target);
 }

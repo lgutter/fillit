@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strcpy.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 11:12:58 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:26:41 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/30 12:01:52 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/30 12:05:02 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,5 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t index;
-
-	index = 0;
-	while (src[index] != '\0')
-	{
-		dst[index] = src[index];
-		index++;
-	}
-	dst[index] = '\0';
-	return (dst);
+	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
 }

@@ -3,29 +3,31 @@
 /*                                                        ::::::::            */
 /*   ft_strncmp.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 12:28:26 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 15:13:46 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 14:35:02 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 14:35:03 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char const *s1, char const *s2, size_t n)
+int		ft_strncmp(const char *string1, const char *string2, size_t len)
 {
 	size_t index;
 
 	index = 0;
-	if (n == 0)
-		return (0);
-	while (s1[index] != '\0' && s2[index] != '\0' && index < (n - 1))
+	if (len == 0)
 	{
-		if (s1[index] != s2[index])
-			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
+		return (0);
+	}
+	while (string1[index] == string2[index])
+	{
+		if (string1[index] == '\0' || index == (len - 1))
+		{
+			return (0);
+		}
 		index++;
 	}
-	if (s1[index] != s2[index])
-		return ((unsigned char)s1[index] - (unsigned char)s2[index]);
-	return (0);
+	return ((unsigned char)string1[index] - (unsigned char)string2[index]);
 }

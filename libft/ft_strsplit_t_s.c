@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strsplit.c                                      :+:    :+:            */
+/*   ft_strsplit_t_s.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/21 18:29:22 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/01/21 18:29:32 by lgutter       ########   odam.nl         */
+/*   Updated: 2020/02/10 16:51:47 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_wordcount(char const *string, char delim)
+static int		ft_is_tab_space(int c)
+{
+	if (c == ' ' || c == '\t')
+	{
+		return (1);
+	}
+	return (0);
+}
+
+static size_t	ft_wordcount_t_s(char const *string)
 {
 	size_t	index;
 	size_t	wordcount;
@@ -21,7 +30,7 @@ static size_t	ft_wordcount(char const *string, char delim)
 	wordcount = 0;
 	while (string[index] != '\0')
 	{
-		while (string[index] == delim)
+		while (ft_is_tab_space(string[index]) == 1)
 		{
 			index++;
 		}
@@ -29,7 +38,7 @@ static size_t	ft_wordcount(char const *string, char delim)
 		{
 			wordcount++;
 		}
-		while (string[index] != delim && string[index] != '\0')
+		while (ft_is_tab_space(string[index]) == 0 && string[index] != '\0')
 		{
 			index++;
 		}
@@ -37,20 +46,19 @@ static size_t	ft_wordcount(char const *string, char delim)
 	return (wordcount);
 }
 
-static char		*ft_writeword(char const *string, size_t index, char delim)
+static char		*ft_writeword_t_s(char const *string, size_t index)
 {
 	size_t	len;
 	char	*ret;
 
 	len = index;
-	while (string[len] != delim && string[len] != '\0')
+	while (ft_is_tab_space(string[len]) == 0 && string[len] != '\0')
 		len++;
-	ret = (char *)malloc(sizeof(char) * ((len - index) + 1));
-	if (!ret)
+	ret = (char *)ft_memalloc(sizeof(char) * len + 1);
+	if (ret == NULL)
 		return (NULL);
-	ret[len - index] = '\0';
 	len = 0;
-	while (string[index] != delim && string[index] != '\0')
+	while (ft_is_tab_space(string[index]) == 0 && string[index] != '\0')
 	{
 		ret[len] = string[index];
 		index++;
@@ -60,7 +68,7 @@ static char		*ft_writeword(char const *string, size_t index, char delim)
 	return (ret);
 }
 
-char			**ft_strsplit(char const *string, char delim)
+char			**ft_strsplit_t_s(char const *string)
 {
 	char	**ret;
 	size_t	index;
@@ -68,20 +76,20 @@ char			**ft_strsplit(char const *string, char delim)
 	size_t	wordindex;
 
 	index = 0;
-	wordcount = ft_wordcount(string, delim);
+	wordcount = ft_wordcount_t_s(string);
 	wordindex = 0;
-	ret = (char **)malloc(sizeof(char *) * (wordcount + 1));
-	if (!ret)
+	ret = (char **)ft_memalloc(sizeof(char *) * (wordcount + 1));
+	if (ret == NULL)
 		return (NULL);
 	ret[wordcount] = NULL;
 	while (string[index] != '\0' && wordindex < wordcount)
 	{
-		while (string[index] == delim)
+		while (ft_is_tab_space(string[index]) == 1)
 			index++;
 		if (string[index] != '\0')
-			ret[wordindex] = ft_writeword(string, index, delim);
+			ret[wordindex] = ft_writeword_t_s(string, index);
 		wordindex++;
-		while (string[index] != delim && string[index] != '\0')
+		while (ft_is_tab_space(string[index]) == 0 && string[index] != '\0')
 			index++;
 	}
 	return (ret);

@@ -3,35 +3,37 @@
 /*                                                        ::::::::            */
 /*   ft_memccpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 16:33:42 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:26:21 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/25 21:31:21 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/02/04 17:37:31 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, void const *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int delim, size_t len)
 {
-	unsigned char		*output;
-	unsigned char const	*input;
 	size_t				index;
+	unsigned char		*output;
+	unsigned const char	*input;
 
-	index = 0;
-	output = dst;
 	input = src;
-	while (index < n && input[index] != (unsigned char)c)
+	output = dst;
+	index = 0;
+	while (index < len && input[index] != (unsigned char)delim)
 	{
 		output[index] = input[index];
 		index++;
 	}
-	if (index == n)
+	if (index == len)
+	{
 		return (NULL);
-	if (input[index] == (unsigned char)c)
+	}
+	else
 	{
 		output[index] = input[index];
-		return ((void *)&output[index + 1]);
+		index++;
+		return ((void *)&output[index]);
 	}
-	return (NULL);
 }

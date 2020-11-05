@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strarrnew.c                                     :+:    :+:            */
+/*   ft_abspos.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/24 17:49:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 17:56:30 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/03 21:24:41 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/03 21:24:42 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	**ft_strarrnew(size_t size)
+long	ft_abspos(long integer)
 {
-	char	**str;
-
-	str = (char **)malloc(sizeof(char *) * size + 1);
-	if (str == NULL)
-		return (NULL);
-	str[size] = NULL;
-	return (str);
+	if (integer < 0)
+	{
+		return (integer * -1);
+	}
+	return (integer);
 }

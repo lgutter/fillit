@@ -3,27 +3,37 @@
 /*                                                        ::::::::            */
 /*   ft_strncat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/18 19:04:20 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 14:26:51 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/30 17:21:50 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/30 17:21:51 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *s1, char const *s2, size_t n)
+char	*ft_strncat(char *string1, const char *string2, size_t len)
 {
-	size_t	index;
-	size_t	judex;
+	size_t index;
+	size_t xedni;
 
 	index = 0;
-	judex = ft_strlen(s1);
-	while (s2[index] != '\0' && index < n)
+	xedni = 0;
+	while (string1[index] != '\0')
 	{
-		s1[index + judex] = s2[index];
 		index++;
 	}
-	s1[index + judex] = '\0';
-	return (s1);
+	while (string2[xedni] != '\0')
+	{
+		if (xedni == len)
+		{
+			string1[index] = '\0';
+			return (string1);
+		}
+		string1[index] = string2[xedni];
+		index++;
+		xedni++;
+	}
+	string1[index] = '\0';
+	return (string1);
 }

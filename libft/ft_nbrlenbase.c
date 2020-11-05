@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putstrarr.c                                     :+:    :+:            */
+/*   ft_nbrlenbase.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 20:51:13 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 16:10:39 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/02 12:11:46 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/11/13 13:10:30 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstrarr(char **strarr)
+size_t		ft_nbrlenbase(long long number, int base)
 {
-	size_t	index;
+	size_t len;
 
-	index = 0;
-	while (strarr[index] != NULL)
+	len = 1;
+	if (number < 0)
+		len++;
+	if (base == 1)
 	{
-		ft_putendl(strarr[index]);
-		index++;
+		if (number < 0)
+			number = number * -1;
+		return ((size_t)number + len);
 	}
+	while (number / base != 0)
+	{
+		len++;
+		number /= base;
+	}
+	return (len);
 }

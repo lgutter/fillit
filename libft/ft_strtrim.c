@@ -3,31 +3,38 @@
 /*                                                        ::::::::            */
 /*   ft_strtrim.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/16 16:07:57 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 17:14:58 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/19 14:47:49 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/02/07 14:32:50 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *str)
 {
-	unsigned int	index;
-	size_t			judex;
-	char			*str;
+	size_t	end;
+	size_t	index;
+	char	*ret;
+	int		empty;
 
 	index = 0;
-	while ((s[index] == ' ' || s[index] == '\t' || s[index] == '\n')\
-	&& s[index] != '\0')
+	empty = 1;
+	while (str[index] == '\n' || str[index] == '\t' || str[index] == ' ')
 		index++;
-	judex = (ft_strlen(s) - 1);
-	while ((s[judex] == ' ' || s[judex] == '\t' || s[judex] == '\n')\
-	&& judex >= index)
-		judex--;
-	str = ft_strsub(s, index, (judex - index) + 1);
-	if (str == NULL)
+	end = ft_strlen(str);
+	if (end > 0)
+		end--;
+	while ((str[end] == '\n' || str[end] == '\t' || str[end] == ' ') && end > 0)
+		end--;
+	if (end == 0 && (str[end] == '\n' || str[end] == '\t' || str[end] == ' '))
+	{
+		index = 0;
+		empty = 0;
+	}
+	ret = ft_strsub(str, (unsigned int)index, (end - index) + empty);
+	if (!ret)
 		return (NULL);
-	return (str);
+	return (ret);
 }

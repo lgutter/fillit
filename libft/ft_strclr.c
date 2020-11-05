@@ -3,23 +3,21 @@
 /*                                                        ::::::::            */
 /*   ft_strclr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 10:55:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:27:15 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/14 14:07:28 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/14 14:07:30 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_strclr(char *s)
+void	ft_strclr(char *string)
 {
-	size_t	index;
+	int index;
 
 	index = 0;
-	while (s[index] != '\0')
+	while (string[index] != '\0')
 	{
-		s[index] = '\0';
+		string[index] = '\0';
 		index++;
 	}
 }

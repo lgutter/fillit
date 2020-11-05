@@ -3,16 +3,18 @@
 /*                                                        ::::::::            */
 /*   ft_isdigit.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 19:54:02 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:02:48 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 17:05:16 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 17:05:17 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+int	ft_isdigit(int character)
 {
-	if (c >= '0' && c <= '9')
+	if (character <= '9' && character >= '0')
+	{
 		return (1);
+	}
 	return (0);
 }

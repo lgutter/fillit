@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstaddend.c                                     :+:    :+:            */
+/*   ft_strcharexpand.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/25 13:07:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/07 20:28:26 by aholster      ########   odam.nl         */
+/*   Created: 2019/10/27 12:30:20 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/10/27 17:49:46 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstaddend(t_list **lst, t_list *new)
+void	ft_strcharexpand(char **source, const char addition)
 {
-	if (*lst == NULL)
+	void *temp;
+
+	temp = *source;
+	if (*source == NULL)
 	{
-		*lst = new;
-		return ;
+		*source = ft_strnew(1);
+		if (*source != NULL)
+		{
+			*source[0] = addition;
+		}
 	}
-	while ((*lst)->next != NULL)
+	else
 	{
-		*lst = (*lst)->next;
+		*source = ft_strcharjoin(*source, addition);
+		free(temp);
 	}
-	(*lst)->next = new;
 }

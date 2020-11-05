@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isprint.c                                       :+:    :+:            */
+/*   get_next_line.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 22:25:07 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/01/31 22:25:08 by lgutter       ########   odam.nl         */
+/*   Created: 2019/02/14 14:37:43 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/14 14:37:44 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isprint(int character)
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+# include "libft.h"
+
+# define BUFF_SIZE	32
+
+typedef struct		s_cache
 {
-	if (character <= '~' && character >= ' ')
-	{
-		return (1);
-	}
-	return (0);
-}
+	int				fd;
+	char			*content;
+	size_t			size;
+	struct s_cache	*next;
+}					t_cache;
+
+int					get_next_line(const int fd, char **line);
+
+#endif

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_strncpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 11:13:03 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 14:27:09 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/30 12:05:07 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/30 12:05:08 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	size_t index;
+	char	*ret;
+	size_t	index;
 
-	index = 0;
-	while (src[index] != '\0' && index < len)
+	index = ft_strlen(src) + 1;
+	if (len >= index)
 	{
-		dst[index] = src[index];
-		index++;
+		ret = ft_memcpy(dst, src, index);
+		while (index < len)
+		{
+			ret[index] = '\0';
+			index++;
+		}
+		return (ret);
 	}
-	while (index < len)
-	{
-		dst[index] = '\0';
-		index++;
-	}
-	return (dst);
+	return (ft_memcpy(dst, src, len));
 }

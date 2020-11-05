@@ -3,16 +3,18 @@
 /*                                                        ::::::::            */
 /*   ft_absneg.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 22:14:45 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:01:54 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 19:35:02 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 19:35:03 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	ft_absneg(long long num)
+long	ft_absneg(long integer)
 {
-	if (num < 0)
-		return (num);
-	return (-(num));
+	if (integer > 0)
+	{
+		return (integer * -1);
+	}
+	return (integer);
 }

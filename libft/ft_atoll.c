@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_atoi.c                                          :+:    :+:            */
+/*   ft_atoll.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-static unsigned long	ft_exceptions(unsigned long integer, const char *string)
+static unsigned long long	ft_exceptions(unsigned long long integer,
+															const char *string)
 {
 	size_t	index;
 
@@ -36,10 +37,10 @@ static unsigned long	ft_exceptions(unsigned long integer, const char *string)
 	return (1);
 }
 
-int						ft_atoi(const char *string)
+long long					ft_atoll(const char *string)
 {
-	size_t			index;
-	unsigned long	result;
+	size_t				index;
+	unsigned long long	result;
 
 	index = 0;
 	result = 0;
@@ -61,6 +62,6 @@ int						ft_atoi(const char *string)
 		index++;
 	}
 	if (string[0] == '-')
-		return ((int)(result * -1));
-	return ((int)result);
+		return ((long long)(result * -1));
+	return ((long long)result);
 }

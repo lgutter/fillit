@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_constrain.c                                     :+:    :+:            */
+/*   ft_str_arr_len.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 17:30:59 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/02 17:14:24 by aholster      ########   odam.nl         */
+/*   Created: 2020/01/21 11:49:18 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/01/21 11:49:21 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_constrain(int in, int min, int max)
+size_t		ft_str_arr_len(char **pointer_array)
 {
-	if (min > max)
+	size_t index;
+
+	index = 0;
+	while (pointer_array[index] != NULL)
 	{
-		ft_swap(&min, &max);
+		index++;
 	}
-	if (in >= min && in <= max)
-		return (in);
-	else if (in < min)
-		return (min);
-	return (max);
+	return (index);
 }

@@ -3,32 +3,39 @@
 /*                                                        ::::::::            */
 /*   ft_putnbr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/12 18:18:57 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/29 19:29:29 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/23 17:50:10 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/23 17:50:22 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int number)
 {
-	if (n == -2147483648)
-	{
-		write(1, "-2", 2);
-		n = 147483648;
-	}
-	else if (n < 0)
-	{
-		write(1, "-", 1);
-		n = (-n);
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + '0');
-	}
+	char digit;
+
+	digit = 'a';
+	if (number == -2147483648)
+		write(1, "-2147483648", 11);
 	else
-		ft_putchar(n + '0');
+	{
+		if (number < 0)
+		{
+			write(1, "-", 1);
+			number *= -1;
+		}
+		if (number / 10 > 0)
+		{
+			ft_putnbr(number / 10);
+			digit = ((number % 10) + 48);
+			write(1, &digit, 1);
+		}
+		else
+		{
+			digit = number + 48;
+			write(1, &digit, 1);
+		}
+	}
 }

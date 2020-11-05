@@ -3,28 +3,30 @@
 /*                                                        ::::::::            */
 /*   ft_memcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 18:57:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:26:35 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/29 20:41:10 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/29 20:41:11 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(void const *s1, void const *s2, size_t n)
+int		ft_memcmp(const void *source1, const void *source2, size_t len)
 {
-	size_t			index;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	size_t				index;
+	const unsigned char	*first;
+	const unsigned char	*second;
 
 	index = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (index < n)
+	first = source1;
+	second = source2;
+	while (index < len)
 	{
-		if (str1[index] != str2[index])
-			return (str1[index] - str2[index]);
+		if (first[index] != second[index])
+		{
+			return (first[index] - second[index]);
+		}
 		index++;
 	}
 	return (0);
