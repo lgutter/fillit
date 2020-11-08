@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_power.c                                         :+:    :+:            */
+/*   ft_intlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 20:20:36 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 18:49:05 by aholster      ########   odam.nl         */
+/*   Created: 2020/05/28 11:52:40 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/05/28 11:52:40 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_power(int num, unsigned int power)
+int		ft_intlen(int n)
 {
-	long long	calc;
+	int		i;
 
-	calc = 1;
-	if (power == 0)
-	{
+	i = 0;
+	if (n == 0)
 		return (1);
-	}
-	while (power > 0)
+	if (n < 0)
+		i++;
+	while (n != 0)
 	{
-		calc = num * calc;
-		if (calc > 2147483647 || calc < -2147483648)
-			return (0);
-		power--;
+		n /= 10;
+		i++;
 	}
-	if (num < 0)
-	{
-		calc = (int)ft_absneg(calc);
-	}
-	return ((int)calc);
+	return (i);
 }

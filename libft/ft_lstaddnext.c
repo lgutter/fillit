@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_stralloc.c                                      :+:    :+:            */
+/*   ft_lstaddnext.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/24 18:08:35 by aholster       #+#    #+#                */
-/*   Updated: 2019/03/24 18:15:06 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/03 21:25:08 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/03 21:25:09 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_stralloc(size_t size, char c)
+t_list	*ft_lstaddnext(t_list *current, t_list *new)
 {
-	char	*str;
-	size_t	index;
-
-	index = 0;
-	str = (char *)malloc(sizeof(char) * size + 1);
-	if (str == NULL)
-		return (NULL);
-	str[size] = '\0';
-	while (index < size)
+	while (current->next != NULL)
 	{
-		str[index] = c;
-		index++;
+		current = current->next;
 	}
-	return (str);
+	current->next = new;
+	return (new);
 }

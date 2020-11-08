@@ -3,17 +3,17 @@
 /*                                                        ::::::::            */
 /*   ft_memdel.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/16 19:47:11 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:27:09 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/13 16:43:15 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/13 16:43:17 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_memdel(void **pointer)
 {
-	free(*ap);
-	*ap = NULL;
+	free(*pointer);
+	*pointer = NULL;
 }

@@ -3,26 +3,30 @@
 /*                                                        ::::::::            */
 /*   ft_memchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 17:42:54 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/16 17:59:13 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/29 18:22:49 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/01/08 10:38:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(void const *s, int c, size_t n)
+void	*ft_memchr(const void *source, int character, size_t len)
 {
-	unsigned char const	*str;
 	size_t				index;
+	const unsigned char	*input;
 
-	str = (unsigned char *)s;
+	input = source;
 	index = 0;
-	while (index < n)
+	if (input == NULL)
+		return (NULL);
+	while (index < len)
 	{
-		if (str[index] == (unsigned char)c)
-			return ((void *)&str[index]);
+		if (input[index] == (unsigned char)character)
+		{
+			return ((void *)&input[index]);
+		}
 		index++;
 	}
 	return (NULL);

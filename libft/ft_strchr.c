@@ -3,27 +3,28 @@
 /*                                                        ::::::::            */
 /*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/18 13:02:35 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:26:47 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 11:05:38 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 11:05:39 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(char const *s, int c)
+char	*ft_strchr(const char *string, int character)
 {
-	size_t			index;
-
-	index = 0;
-	while (s[index] != '\0')
+	while (*string != '\0')
 	{
-		if (s[index] == (unsigned char)c)
-			return ((char *)&s[index]);
-		index++;
+		if (*string == character)
+		{
+			return ((char *)string);
+		}
+		string++;
 	}
-	if (s[index] == (unsigned char)c)
-		return ((char *)&s[index]);
+	if (character == '\0')
+	{
+		return ((char *)string);
+	}
 	return (NULL);
 }

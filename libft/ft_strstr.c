@@ -3,33 +3,49 @@
 /*                                                        ::::::::            */
 /*   ft_strstr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/18 14:27:21 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 14:30:55 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 11:51:53 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 11:51:54 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(char const *haystack, char const *needle)
+static int	check_word(const char *string, const char *word)
 {
-	size_t	index;
-	size_t	judex;
+	size_t index;
 
 	index = 0;
-	if (needle[0] == '\0')
-		return ((char *)haystack);
-	while (haystack[index] != '\0')
+	while (word[index] != '\0')
 	{
-		judex = 0;
-		while (needle[judex] == haystack[index + judex] &&\
-		haystack[index + judex] != '\0')
+		if (word[index] != string[index])
 		{
-			judex++;
+			return (0);
 		}
-		if (needle[judex] == '\0')
-			return ((char *)&haystack[index]);
+		index++;
+	}
+	return (1);
+}
+
+char		*ft_strstr(const char *string, const char *word)
+{
+	size_t index;
+
+	index = 0;
+	if (string == NULL || word == NULL || word[0] == '\0')
+	{
+		return ((char *)string);
+	}
+	while (string[index] != '\0')
+	{
+		if (string[index] == word[0])
+		{
+			if (check_word(&string[index], word) == 1)
+			{
+				return ((char *)&string[index]);
+			}
+		}
 		index++;
 	}
 	return (NULL);

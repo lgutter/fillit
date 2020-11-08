@@ -3,23 +3,32 @@
 /*                                                        ::::::::            */
 /*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 12:25:24 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:26:54 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 14:34:52 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 14:34:53 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(char const *s1, char const *s2)
+int		ft_strcmp(const char *string1, const char *string2)
 {
-	size_t	index;
+	size_t index;
 
 	index = 0;
-	while (s1[index] == s2[index] && s2[index] != '\0' && s1[index] != '\0')
+	if (string1 == NULL && string2 != NULL &&
+		string1 != NULL && string2 == NULL)
+		return (1);
+	else if (string1 == NULL)
+		return (0);
+	while (string1[index] == string2[index])
 	{
+		if (string1[index] == '\0')
+		{
+			return (0);
+		}
 		index++;
 	}
-	return ((unsigned char)s1[index] - (unsigned char)s2[index]);
+	return ((unsigned char)string1[index] - (unsigned char)string2[index]);
 }

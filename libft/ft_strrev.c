@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_nbrlen.c                                        :+:    :+:            */
+/*   ft_strrev.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/14 13:36:17 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:14:08 by aholster      ########   odam.nl         */
+/*   Created: 2019/09/27 13:40:07 by ivan-tey      #+#    #+#                 */
+/*   Updated: 2019/10/22 12:00:46 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_nbrlen(long long n, unsigned int base)
-{
-	unsigned int length;
+#include "libft.h"
 
-	length = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		length++;
-	while (n != 0)
+char			*ft_strrev(char *str, int start)
+{
+	int i;
+	int len;
+
+	i = start;
+	len = ft_strlen(str) - 1;
+	while (i < len)
 	{
-		n = n / base;
-		length++;
+		ft_swap(&str[i], &str[len]);
+		i++;
+		len--;
 	}
-	return (length);
+	return (str);
 }

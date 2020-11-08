@@ -3,16 +3,36 @@
 /*                                                        ::::::::            */
 /*   ft_strnequ.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 15:33:31 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/30 15:01:41 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/17 15:49:40 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/17 15:49:44 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strnequ(char const *str1, char const *str2, size_t len)
 {
-	return (ft_strncmp(s1, s2, n) == 0);
+	size_t index;
+
+	index = 0;
+	if (len == 0)
+		return (1);
+	else
+	{
+		while (str1[index] != '\0' && str2[index] != '\0' && index < (len - 1))
+		{
+			if (str1[index] != str2[index])
+			{
+				return (0);
+			}
+			index++;
+		}
+		if (str1[index] != str2[index])
+		{
+			return (0);
+		}
+		return (1);
+	}
 }

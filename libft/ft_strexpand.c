@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strarrdel.c                                     :+:    :+:            */
+/*   ft_strexpand.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 21:03:28 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/31 21:25:04 by aholster      ########   odam.nl         */
+/*   Created: 2019/09/13 16:04:59 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/02/04 15:23:17 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strarrdel(char ***ap)
+void	ft_strexpand(char **source, const char *addition)
 {
-	size_t	index;
+	void *temp;
 
-	index = 0;
-	while ((*ap)[index] != NULL)
+	temp = *source;
+	if (*source == NULL)
 	{
-		ft_strdel(&((*ap)[index]));
-		index++;
+		*source = ft_strdup(addition);
 	}
-	free(*ap);
-	*ap = NULL;
+	else if (addition != NULL)
+	{
+		*source = ft_strjoin(*source, addition);
+		free(temp);
+	}
 }

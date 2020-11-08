@@ -3,94 +3,86 @@
 /*                                                        ::::::::            */
 /*   ft_strsplit.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/20 16:41:45 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 18:58:56 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/21 18:29:22 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/21 18:29:32 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_wordskip(char const *s, int c)
+static size_t	ft_wordcount(char const *string, char delim)
 {
-	unsigned int	index;
+	size_t	index;
+	size_t	wordcount;
 
 	index = 0;
-	while (s[index] != '\0')
+	wordcount = 0;
+	while (string[index] != '\0')
 	{
-		if (s[index] == (char)c)
-			return (index);
-		index++;
+		while (string[index] == delim)
+		{
+			index++;
+		}
+		if (string[index] != '\0')
+		{
+			wordcount++;
+		}
+		while (string[index] != delim && string[index] != '\0')
+		{
+			index++;
+		}
 	}
-	return (index);
+	return (wordcount);
 }
 
-static unsigned int	ft_wordcount(char const *s, char c)
+static char		*ft_writeword(char const *string, size_t index, char delim)
 {
-	size_t			index;
-	unsigned int	ret;
+	size_t	len;
+	char	*ret;
 
-	index = 0;
-	ret = 0;
-	while (s[index] != '\0')
+	len = index;
+	while (string[len] != delim && string[len] != '\0')
+		len++;
+	ret = (char *)malloc(sizeof(char) * ((len - index) + 1));
+	if (!ret)
+		return (NULL);
+	ret[len - index] = '\0';
+	len = 0;
+	while (string[index] != delim && string[index] != '\0')
 	{
-		while (s[index] == c)
-			index++;
-		while (s[index] != '\0' && s[index] != c)
-			index++;
-		if ((s[index] == '\0' && s[index - 1] != c) || s[index] != '\0')
-			ret++;
+		ret[len] = string[index];
+		index++;
+		len++;
 	}
+	ret[len] = '\0';
 	return (ret);
 }
 
-static char			**ft_insert(char const *s, char **array, char c,\
-unsigned int *judex)
+char			**ft_strsplit(char const *string, char delim)
 {
-	while (s[*judex] == c)
-		*judex = *judex + 1;
-	if (s[*judex] != '\0')
-	{
-		array[0] = ft_strsub(s, *judex, ft_wordskip(&s[*judex], c));
-		if (array[0] == NULL)
-		{
-			while (*array != NULL)
-			{
-				ft_strclr(*array);
-				ft_strdel(&*array);
-				array++;
-			}
-			return (NULL);
-		}
-		*judex = *judex + ft_wordskip(&s[*judex], c);
-	}
-	return (array);
-}
-
-char				**ft_strsplit(char const *s, char c)
-{
-	char			**ret;
-	unsigned int	wordcount;
-	unsigned int	index;
-	unsigned int	judex;
+	char	**ret;
+	size_t	index;
+	size_t	wordcount;
+	size_t	wordindex;
 
 	index = 0;
-	judex = 0;
-	wordcount = ft_wordcount(s, c);
-	ret = (char**)malloc(sizeof(char*) * (wordcount + 1));
-	if (ret == NULL)
+	wordcount = ft_wordcount(string, delim);
+	wordindex = 0;
+	ret = (char **)malloc(sizeof(char *) * (wordcount + 1));
+	if (!ret)
 		return (NULL);
-	while (index < wordcount)
+	ret[wordcount] = NULL;
+	while (string[index] != '\0' && wordindex < wordcount)
 	{
-		if (ft_insert(s, &ret[index], c, &judex) == NULL)
-		{
-			free(ret);
-			ret = NULL;
-			return (NULL);
-		}
-		index++;
+		while (string[index] == delim)
+			index++;
+		if (string[index] != '\0')
+			ret[wordindex] = ft_writeword(string, index, delim);
+		wordindex++;
+		while (string[index] != delim && string[index] != '\0')
+			index++;
 	}
-	ret[index] = (NULL);
 	return (ret);
 }

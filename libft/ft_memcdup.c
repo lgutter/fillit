@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_sqrt.c                                          :+:    :+:            */
+/*   ft_memcdup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 21:43:31 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:16:49 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/14 12:22:13 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/14 12:22:13 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
-{
-	int count;
+#include "libft.h"
 
-	if (nb < 0)
-		return (0);
-	count = 0;
-	while (count * count <= nb)
-	{
-		if (count * count == nb)
-			return (count);
-		count++;
-	}
-	return (0);
+void	*ft_memcdup(const void *source, int delim, size_t size)
+{
+	return (ft_memdup(source, ft_strlenc((char *)source, delim, size)));
 }

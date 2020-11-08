@@ -3,26 +3,28 @@
 /*                                                        ::::::::            */
 /*   ft_memdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/18 16:02:34 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/18 17:34:27 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/02 11:32:38 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/02 11:32:39 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memdup(void *src, size_t len)
+void	*ft_memdup(const void *source, size_t len)
 {
-	size_t	index;
-	char	*ret;
-	char	*input;
+	size_t				index;
+	unsigned char		*ret;
+	const unsigned char	*input;
 
 	index = 0;
-	input = src;
-	ret = (char *)malloc(sizeof(char) * len);
+	input = (const unsigned char *)source;
+	ret = (void *)ft_memalloc(sizeof(unsigned char) * len);
 	if (ret == NULL)
+	{
 		return (NULL);
+	}
 	while (index < len)
 	{
 		ret[index] = input[index];

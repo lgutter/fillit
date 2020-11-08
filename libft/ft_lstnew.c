@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_lstnew.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/21 19:28:30 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 20:54:29 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/02 12:25:13 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/02 12:25:14 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*head;
+	t_list *new;
 
-	head = (t_list *)malloc(sizeof(t_list));
-	if (head == NULL)
+	new = (t_list *)malloc(sizeof(t_list) * 1);
+	if (new == NULL)
+	{
 		return (NULL);
-	if (!(content))
-	{
-		head->content = NULL;
-		head->content_size = 0;
 	}
-	else
+	if (content == NULL)
 	{
-		head->content = ft_memalloc(content_size);
-		if (head->content == NULL)
-		{
-			free(head);
-			return (NULL);
-		}
-		ft_memcpy(head->content, content, content_size);
-		head->content_size = content_size;
+		new->content = NULL;
+		new->content_size = 0;
+		new->next = NULL;
+		return (new);
 	}
-	head->next = NULL;
-	return (head);
+	new->content = ft_memdup(content, content_size);
+	if (new->content == NULL)
+	{
+		free(new);
+		new = NULL;
+		return (NULL);
+	}
+	new->content_size = content_size;
+	new->next = NULL;
+	return (new);
 }

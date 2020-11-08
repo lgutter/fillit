@@ -3,86 +3,48 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: aholster <aholster@student.codam.nl>         +#+                      #
+#    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/02/16 15:46:43 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/03 18:28:58 by lgutter       ########   odam.nl          #
+#    Created: 2019/01/16 14:00:27 by lgutter       #+#    #+#                  #
+#    Updated: 2019/11/29 12:56:31 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-BONOR := lstnew lstdelone lstdel lstadd lstiter lstmap
+NAME := libft.a
+include ./libftsources
 
-ADVOR := memalloc memdel strnew strdel strclr striter striteri strmap\
- strmapi strequ strnequ strsub strjoin strtrim strsplit itoa putchar\
- putstr putendl putnbr putchar_fd putstr_fd putendl_fd putnbr_fd 
+CFLAGS := -Wall -Wextra -Werror
 
-BASICOR := memset bzero memcpy memccpy memmove memchr memcmp\
- strlen strdup strcpy strncpy strcat strncat strlcat strchr strrchr\
- strstr strnstr strcmp strncmp\
- atoi isalpha isdigit isalnum isascii isprint toupper tolower
+SRCS := $(LFTSOURCES:%= %.c)
+OBJS := $(LFTSOURCES:%= %.o)
 
-CUSOR:= nbrlen del lstaddend itoba iswhitespace isprime power putstrarr\
- putstrarr_fd strarrdel strarrtolst lsttostrarr lstleng min max constrain\
- segdefault factorial count_if range sqrt absneg swap lsttardest memjoin \
- memdup strarrnew textangle stralloc bitprint
-
-
-FILEC = $(ADVOR:%=./ft_%.c) $(BONOR:%=./ft_%.c)\
-		$(CUSOR:%=./ft_%.c) $(BASICOR:%=./ft_%.c)
-
-OBJ =	$(ADVOR:%=./ft_%.o) $(BONOR:%=./ft_%.o)\
-		$(CUSOR:%=./ft_%.o) $(BASICOR:%=./ft_%.o)
-
-HEAD = libft.h
-
-NAME = libft.a
-
-NORM = norminette $(FILEC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
-
-GCCC = ${CC} -c
-CC = gcc -Wall -Werror -Wextra
-AR = ar rcs
+C_RESET = \033[0;00m
+C_CLEAN = \033[38;5;159m
+C_FCLEAN = \033[38;5;81m
+C_OBJECTS = \033[38;5;75m
+C_LIB = \033[38;5;33m
+C_LINES = \033[38;5;250m
 
 all: $(NAME)
 
-assemble: $(OBJ)
-	@$(AR) $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	@ar rc $@ $^
 	@ranlib $(NAME)
-
-$(NAME):
-	@echo "\033[0;33mStarting assembly of libft.a...\033[0;00m"
-	@time make assemble
-	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
+	@echo "$(C_LIB)Libft.a has been compiled$(C_RESET)"
 
 %.o: %.c
-	@$(GCCC) -o $@ $<
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	@rm -rf $(OBJ)
-	@find "./" -type f \( -name '*~' -o -name '\#*\#' -o -name '.DS_Store' \)\
-	 -exec rm -rf {} \;
+	@rm -rf $(OBJS)
+	@echo "$(C_CLEAN)Libft object files removed$(C_RESET)"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "\033[0;31mObituary of $(NAME): Deceased on $(shell date).\033[0;00m\n"
+	@echo "$(C_FCLEAN)Libft.a removed$(C_RESET)"
+	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
-norm:
-	@echo "**+++=====*=====*=====*=====*{\033[0;31mOUT\033[0;00m}\
-	*=====*=====*=====*=====+++**"
-	@$(NORM) || TRUE 
-	@echo "**+++=====*=====*=====*=====*=====*=====*===*=====*=====+++**"
-
-add:
-	@git add $(FILEC) $(HEAD) Makefile author
-	git status
-
-push: norm
-ifdef MSG
-	@git commit -m "$(MSG)"
-	git push
-else
-	@git commit
-	git push
-endif
+.PHONY: all objects clean fclean re

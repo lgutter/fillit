@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putstrarr_fd.c                                  :+:    :+:            */
+/*   ft_memrcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 21:00:21 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 16:03:05 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/28 18:33:50 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/28 18:33:55 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstrarr_fd(char **strarr, int fd)
+void	*ft_memrcpy(void *dst, const void *src, size_t len)
 {
-	size_t	index;
+	unsigned char		*output;
+	unsigned const char	*input;
 
-	index = 0;
-	while (strarr[index] != NULL)
+	output = dst;
+	input = src;
+	while (len > 0)
 	{
-		ft_putendl_fd(strarr[index], fd);
-		index++;
+		output[len - 1] = input[len - 1];
+		len--;
 	}
+	return (dst);
 }

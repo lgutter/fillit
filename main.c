@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 		if (fd >= 0)
 			fillit(fd);
 		else
-			ft_error();
+			ft_error("error opening source_file!");
 	}
 	else
 		ft_putendl("usage: ./fillit source_file");

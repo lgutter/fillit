@@ -3,17 +3,24 @@
 /*                                                        ::::::::            */
 /*   ft_iswhitespace.c                                  :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/30 20:00:49 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:02:48 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/19 17:58:22 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/19 17:58:26 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iswhitespace(int c)
+#include "libft.h"
+
+int	ft_iswhitespace(char character)
 {
-	if (c == '\t' || c == '\r' || c == '\n' || c == '\f' || c == '\v'\
-	|| c == ' ')
+	if (character == '\n' || character == '\t' || character == ' ' ||
+		character == '\v' || character == '\f' || character == '\r')
+	{
 		return (1);
-	return (0);
+	}
+	else
+	{
+		return (0);
+	}
 }

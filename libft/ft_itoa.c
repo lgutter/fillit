@@ -3,36 +3,40 @@
 /*                                                        ::::::::            */
 /*   ft_itoa.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 16:43:03 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:03:03 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/23 12:11:07 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/23 12:11:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int integer)
 {
-	char			*str;
-	unsigned int	index;
+	size_t	len;
+	char	*ret;
 
-	if (n == -2147483648)
+	ret = NULL;
+	if (integer == -2147483648)
 		return (ft_strdup("-2147483648"));
-	index = ft_nbrlen((long long)n, 10);
-	str = ft_strnew(index);
-	if (str == NULL)
+	len = ft_nbrlenbase((long)integer, 10);
+	ret = (char *)malloc(sizeof(char) * (len + 1));
+	if (ret == NULL)
 		return (NULL);
-	if (n < 0)
+	if (integer < 0)
 	{
-		str[0] = '-';
-		n = -(n);
+		ret[0] = '-';
+		integer *= -1;
 	}
-	while (index > 1 || (index > 0 && str[0] != '-'))
+	ret[len] = '\0';
+	len--;
+	while (integer / 10 != 0)
 	{
-		index--;
-		str[index] = ((n % 10) + '0');
-		n = n / 10;
+		ret[len] = ((integer % 10) + 48);
+		integer /= 10;
+		len--;
 	}
-	return (str);
+	ret[len] = (integer + 48);
+	return (ret);
 }

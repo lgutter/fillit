@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_count_if.c                                      :+:    :+:            */
+/*   ft_strcdup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 21:31:16 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 20:56:26 by aholster      ########   odam.nl         */
+/*   Created: 2020/01/10 17:47:04 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/01/21 19:50:31 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_if(char **tab, int (*f)(char*))
-{
-	int	i;
-	int c;
+#include "libft.h"
 
-	i = 0;
-	c = 0;
-	while (tab[i] != '\0')
+char	*ft_strcdup(const char *string, char delim)
+{
+	size_t	len;
+
+	if (string == NULL)
 	{
-		if (((*f)(tab[i])) == 1)
-			c++;
-		i++;
+		return (NULL);
 	}
-	return (c);
+	len = ft_strlenc(string, delim, ft_strlen(string));
+	return (ft_strndup(string, len));
 }

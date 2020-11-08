@@ -5,38 +5,45 @@
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/25 16:12:43 by lgutter        #+#    #+#                */
+/*   Created: 2019/03/25 16:12:43 by lgutter       #+#    #+#                 */
 /*   Updated: 2019/04/01 15:13:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+void	ft_error(char *error)
+{
+	ft_putstr_fd("fillit: ", STDERR_FILENO);
+	ft_putendl_fd(error, STDERR_FILENO);
+	exit(-1);
+}
+
 void	fillit(int fd)
 {
-	unsigned int	tet[27];
-	char			buff[20];
-	ssize_t			ret;
+	t_tet_data	tet[MAX_TETS + 1];
+	char		buff[20];
+	ssize_t		ret;
 
-	tet[26] = 0;
+	tet[TET_COUNT] = 0;
 	ret = read(fd, buff, 20);
-	while (1)
+	while (true)
 	{
-		tet[tet[26]] = 0;
-		if (read_tet(&tet[tet[26]], buff) != 1 || check_tet(&tet[tet[26]]) != 1)
-			ft_error();
-		tet[26]++;
+		tet[tet[TET_COUNT]] = 0;
+		if (parse_tet(&tet[tet[TET_COUNT]], buff) != 1)
+			ft_error("parsing error!");
+		tet[TET_COUNT]++;
 		if (read(fd, buff, 1) == 1)
 		{
 			if (buff[0] != '\n')
-				ft_error();
+				ft_error("tetromino definitions should be seperated by '\\n'");
 			ret = read(fd, buff, 20);
-			if (ret != 20 || tet[26] > 25)
-				ft_error();
+			if (ret != 20 || tet[TET_COUNT] >= MAX_TETS)
+				ft_error(ret == 20 ? "too many tetrominos!" : "parsing error!");
 		}
 		else
 			break ;
 	}
 	close(fd);
-	map_control(&tet[0], tet[26]);
+	map_control(&tet[0], tet[TET_COUNT]);
 }

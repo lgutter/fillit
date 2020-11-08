@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_isprime.c                                       :+:    :+:            */
+/*   ft_free_str_array.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 19:14:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:02:48 by aholster      ########   odam.nl         */
+/*   Created: 2020/01/22 14:12:44 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/02/07 11:40:00 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_isprime(unsigned int num)
-{
-	unsigned int	counter;
+#include "libft.h"
 
-	counter = 2;
-	while (counter <= num / counter)
+size_t	ft_free_str_array(char **array)
+{
+	size_t index;
+
+	index = 0;
+	if (array != NULL)
 	{
-		if (num % counter == 0)
-			return (0);
-		counter++;
+		while (array[index] != NULL)
+		{
+			free(array[index]);
+			array[index] = NULL;
+			index++;
+		}
+		free(array);
 	}
-	return (1);
+	return (index);
 }

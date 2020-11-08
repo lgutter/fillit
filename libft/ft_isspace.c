@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_max.c                                           :+:    :+:            */
+/*   ft_isspace.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 17:28:38 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:12:28 by aholster      ########   odam.nl         */
+/*   Created: 2020/05/28 11:48:01 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/05/28 11:48:01 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_max(int val1, int val2)
+#include "libft.h"
+
+int		ft_isspace(int character)
 {
-	if (val1 > val2)
-		return (val1);
-	return (val2);
+	if (character == '\t' || character == '\n' || character == '\v'
+		|| character == '\f' || character == '\r' || character == ' ')
+	{
+		return (1);
+	}
+	return (0);
 }

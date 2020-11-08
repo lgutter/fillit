@@ -3,16 +3,18 @@
 /*                                                        ::::::::            */
 /*   ft_isprint.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 19:42:14 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:02:48 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 22:25:07 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 22:25:08 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+int		ft_isprint(int character)
 {
-	if (c >= 32 && c <= 126)
+	if (character <= '~' && character >= ' ')
+	{
 		return (1);
+	}
 	return (0);
 }

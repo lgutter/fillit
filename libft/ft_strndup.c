@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_range.c                                         :+:    :+:            */
+/*   ft_strndup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 21:33:15 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:29:30 by aholster      ########   odam.nl         */
+/*   Created: 2020/01/21 19:46:22 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/01/21 19:47:55 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_range(int min, int max)
+char	*ft_strndup(const char *string, size_t len)
 {
-	int *res;
-	int cur;
+	char	*ret;
+	size_t	index;
 
-	cur = min;
-	if (min >= max)
-		return (0);
-	res = (int *)malloc(sizeof(int) * (max - min));
-	if (res == NULL)
-		return (NULL);
-	while (cur <= max)
+	index = 0;
+	if (string == NULL)
 	{
-		res[cur - min] = cur;
-		cur++;
+		return (NULL);
 	}
-	return (res);
+	ret = (char *)malloc(sizeof(char) * (len + 1));
+	if (ret != NULL)
+	{
+		while (index < len)
+		{
+			ret[index] = string[index];
+			index++;
+		}
+		ret[index] = '\0';
+	}
+	return (ret);
 }

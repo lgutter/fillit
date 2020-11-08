@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   read_tet.c                                         :+:    :+:            */
+/*   ft_memexpand.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/25 16:26:49 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/03/25 16:26:50 by lgutter       ########   odam.nl         */
+/*   Created: 2019/02/15 13:29:30 by lgutter       #+#    #+#                 */
+/*   Updated: 2020/02/04 18:11:55 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		read_tet(unsigned int *tet, char *buff)
-{
-	short i;
-	short hash;
+#include "libft.h"
 
-	i = 0;
-	hash = 0;
-	if (buff[19] != '\n')
-		return (-1);
-	while (i < 20)
+void	ft_memexpand(void **src, size_t *size1, const void *add, size_t size2)
+{
+	void *temp;
+
+	temp = *src;
+	if (*src == NULL)
 	{
-		while (buff[i] == '.')
-			i++;
-		if (buff[i] == '#' && hash < 4)
-		{
-			hash++;
-			*tet = (*tet << 4) | (i - ((i + 1) / 5));
-		}
-		else if ((i + 1) % 5 != 0 || buff[i] != '\n')
-			return (-1);
-		i++;
+		*src = ft_memdup(add, size2);
+		*size1 += size2;
 	}
-	if (hash != 4)
-		return (-1);
-	return (1);
+	else if (add != NULL && size2 != 0)
+	{
+		*src = ft_memjoin(*src, *size1, add, size2);
+		free(temp);
+		*size1 += size2;
+	}
 }

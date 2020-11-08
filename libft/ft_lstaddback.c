@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_del.c                                           :+:    :+:            */
+/*   ft_lstaddback.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/24 13:11:45 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:28:41 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/03 17:40:03 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/03 17:40:04 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_del(void *data, size_t size)
+void	ft_lstaddback(t_list **start, t_list *new)
 {
-	free(data);
-	data = NULL;
-	size = 0;
+	t_list	*current;
+
+	current = *start;
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	current->next = new;
 }

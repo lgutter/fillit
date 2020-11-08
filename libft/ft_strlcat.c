@@ -3,36 +3,34 @@
 /*                                                        ::::::::            */
 /*   ft_strlcat.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/20 16:37:37 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 20:52:24 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/30 19:39:45 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/30 19:39:46 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, char const *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	output;
-	size_t	sourcelen;
-	size_t	index;
+	size_t index;
+	size_t xedni;
+	size_t ret;
 
-	index = 0;
-	output = 0;
-	sourcelen = ft_strlen(src);
-	while (dst[output] != '\0' && output < size)
-		output++;
-	if (output + 1 >= size)
-		return (output + sourcelen);
-	else
+	ret = ft_strlen(dst);
+	xedni = 0;
+	if (size <= ret)
 	{
-		while (index + output < size - 1)
-		{
-			dst[index + output] = src[index];
-			index++;
-		}
-		dst[size - 1] = '\0';
+		return (size + ft_strlen(src));
 	}
-	return (output + sourcelen);
+	index = ret;
+	while (index < (size - 1) && src[xedni] != '\0')
+	{
+		dst[index] = src[xedni];
+		index++;
+		xedni++;
+	}
+	dst[index] = '\0';
+	return (ret + ft_strlen(src));
 }

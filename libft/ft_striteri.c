@@ -3,21 +3,21 @@
 /*                                                        ::::::::            */
 /*   ft_striteri.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/16 21:06:41 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:20:27 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/16 14:56:13 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/16 14:56:15 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char *string, void (*function)(unsigned int, char *))
 {
-	unsigned int	index;
+	unsigned int index;
 
 	index = 0;
-	while (s[index] != '\0')
+	while (string[index] != '\0')
 	{
-		((*f)(index, &s[index]));
+		((*function)(index, &string[index]));
 		index++;
 	}
 }

@@ -3,16 +3,18 @@
 /*                                                        ::::::::            */
 /*   ft_isascii.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 19:45:26 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:02:48 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/31 22:12:46 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 22:12:47 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+int		ft_isascii(int character)
 {
-	if (c >= 0 && c <= 127)
+	if (character <= '\x7f' && character >= '\0')
+	{
 		return (1);
+	}
 	return (0);
 }

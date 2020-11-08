@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	increment_offset(unsigned int *tet, unsigned short di)
+#include "fillit.h"
+
+int	increment_offset(t_tet_data *tet, unsigned short di)
 {
 	unsigned char *offx;
 	unsigned char *offy;

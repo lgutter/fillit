@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstleng.c                                       :+:    :+:            */
+/*   ft_memdelsize.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/31 17:32:55 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:29:22 by aholster      ########   odam.nl         */
+/*   Created: 2019/02/02 14:34:16 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/02 14:34:18 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_lstleng(t_list *lst)
+void	ft_memdelsize(void *pointer, size_t size)
 {
-	unsigned int	index;
+	size_t			index;
+	unsigned char	*input;
 
 	index = 0;
-	while (lst != NULL)
+	input = pointer;
+	while (index < size)
 	{
-		lst = lst->next;
+		input[index] = 0;
 		index++;
 	}
-	return (index);
+	free(pointer);
+	pointer = NULL;
 }

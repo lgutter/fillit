@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   ft_putchar_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/12 18:45:21 by aholster       #+#    #+#                */
-/*   Updated: 2019/02/01 21:27:36 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/23 18:06:13 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/23 18:06:21 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char character, int filedes)
 {
-	write(fd, &c, 1);
+	write(filedes, &character, 1);
 }

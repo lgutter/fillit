@@ -3,17 +3,17 @@
 /*                                                        ::::::::            */
 /*   ft_strdel.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 10:55:01 by aholster       #+#    #+#                */
-/*   Updated: 2019/01/25 16:29:19 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/14 13:46:05 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/14 13:46:09 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+void	ft_strdel(char **string)
 {
-	free(*as);
-	*as = NULL;
+	free(*string);
+	*string = NULL;
 }
