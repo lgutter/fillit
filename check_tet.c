@@ -12,11 +12,11 @@
 
 #include "fillit.h"
 
-int		check_tet(unsigned int *tet)
+int		check_tet(t_tet_data *tet)
 {
-	unsigned int	temp;
-	short			check;
-	short			count;
+	t_tet_data	temp;
+	short		check;
+	short		count;
 
 	count = 0;
 	check = 12;

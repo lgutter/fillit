@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   read_tet.c                                         :+:    :+:            */
+/*   parse_tet.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		read_tet(unsigned int *tet, char *buff)
+#include "fillit.h"
+
+int		parse_tet(t_tet_data *tet, char *buff)
 {
-	short i;
-	short hash;
+	short	i;
+	short	hash;
 
 	i = 0;
 	hash = 0;
-	if (buff[19] != '\n')
+	if (ft_strlen(buff) < 20 || buff[19] != '\n')
 		return (-1);
 	while (i < 20)
 	{
@@ -34,5 +36,5 @@ int		read_tet(unsigned int *tet, char *buff)
 	}
 	if (hash != 4)
 		return (-1);
-	return (1);
+	return (check_tet(tet));
 }

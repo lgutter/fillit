@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES := main.c fillit.c solver.c shift_corner.c place_tet.c smallest_map.c\
-check_tet.c increment_offset.c remove_tet.c print_result.c read_tet.c\
+FILES := main.c fillit.c solver.c shift_corner.c place_tet.c\
+check_tet.c increment_offset.c remove_tet.c print_result.c parse_tet.c\
 calc_empty.c
 
 HEADER := fillit.h

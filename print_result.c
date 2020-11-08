@@ -12,28 +12,28 @@
 
 #include "fillit.h"
 
-static void	ft_converttet(unsigned int tet, unsigned int index,\
+static void	ft_converttet(t_tet_data tet, unsigned short index,\
 			char arr[16][16])
 {
 	unsigned short	offy;
 	unsigned short	offx;
 	unsigned char	offset;
 
-	offy = (tet >> 16) & MASKBY;
+	offy = (tet >> 16) & MASKBYTE;
 	offx = (tet >> 24);
 	offset = 0;
 	while (offset <= 12)
 	{
-		arr[offx + ((tet >> (offset + 2)) & MASK2B)]\
-		[offy + ((tet >> offset) & MASK2B)] = 'A' + index;
+		arr[offx + ((tet >> (offset + 2)) & MASK2BIT)]\
+		[offy + ((tet >> offset) & MASK2BIT)] = 'A' + index;
 		offset += 4;
 	}
 }
 
 static void	ft_initsquare(unsigned short di, char arr[16][16])
 {
-	unsigned int	index;
-	unsigned int	sudex;
+	unsigned short	index;
+	unsigned short	sudex;
 
 	index = 0;
 	while (index < di)
@@ -49,10 +49,10 @@ static void	ft_initsquare(unsigned short di, char arr[16][16])
 	}
 }
 
-void		print_result(unsigned int *tet, unsigned short di)
+void		print_result(t_tet_data *tet, unsigned short di)
 {
 	char			arr[16][16];
-	unsigned int	index;
+	unsigned short	index;
 
 	index = 0;
 	ft_initsquare(di, arr);
